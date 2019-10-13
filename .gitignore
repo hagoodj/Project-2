@@ -4,3 +4,9 @@ public
 index.html
 wishlist.html
 schema
+sequelize-query.js
+models
+index.js
+movie.js
+user.js
+user-movie.js
