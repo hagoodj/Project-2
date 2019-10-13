@@ -37,6 +37,12 @@ module.exports = function(sequelize, DataTypes) {
     Movie.hasMany(models.User, {
       onDelete: "cascade"
     });
+
+    Movie.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
 
   return Movie;
