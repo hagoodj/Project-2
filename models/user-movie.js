@@ -1,12 +1,27 @@
 module.exports = function(sequelize, DataTypes) {
 
-  var Movie = sequelize.define('Movie', {
-    tableName: 'movies',
+  var userMovie = sequelize.define('userMovie', {
+    tableName: 'user_movie',
     freezeTableName: true,
-    id: {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: true,
+        isLowercase: true, // <-- double check this with Jerome/TA's
+        isUppercase: true, // <-- double check this with Jerome/TA's
+      }
+    },
+    userpin: {
       type: DataTypes.INTERGER,
+      allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      unique: true,
+      validate: {
+        notNull: true,
+        isNumeric: true,
+        len: [4, 6]
+      }
     },
     title: {
       type: DataTypes.STRING,
@@ -15,29 +30,16 @@ module.exports = function(sequelize, DataTypes) {
         notNull: true,
         isLowercase: true, // <-- double check this with Jerome/TA's
         isUppercase: true, // <-- double check this with Jerome/TA's
-      },
-      validate: {
-        notNull: true,
-        isLowercase: true, // <-- double check this with Jerome/TA's
-        isUppercase: true, // <-- double check this with Jerome/TA's
       }
     },
-    genre: {
-      type: DataTypes.STRING,
+    like: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       validate: {
         notNull: true,
-        isLowercase: true, // <-- double check this with Jerome/TA's
-        isUppercase: true, // <-- double check this with Jerome/TA's
       }
     }
   });
 
-  Movie.associate = function(models) { // <-- double check this with Jerome/TA's. ALSO ASK ABOUT SYNCING.
-    Movie.hasMany(models.User, {
-      onDelete: "cascade"
-    });
-  };
-
-  return Movie;
+  return userMovie;
 };
