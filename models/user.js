@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'users',
     freezeTableName: true,
     id: {
-      type: DataTypes.INTERGER,
+      type: DataTypes.INTEGER,
       autoIncrement: true
     },
     username: {
@@ -12,12 +12,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: true,
-        isLowercase: true, // <-- double check this with Jerome/TA's
-        isUppercase: true, // <-- double check this with Jerome/TA's
       }
     },
     userpin: {
-      type: DataTypes.INTERGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       unique: true,
