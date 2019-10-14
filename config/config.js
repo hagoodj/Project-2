@@ -1,11 +1,11 @@
-{
+module.exports = {
   "development": {
     "username": "root",
     "password": "password",
     "database": "movie_tracker",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
+
   },
   "test": {
     "username": "root",
@@ -13,14 +13,10 @@
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+
   },
   "production": {
-    "username": "root",
-    "password": "password",
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql",
-    "operatorsAliases": false
   }
 }
