@@ -1,2 +1,14 @@
 DS_Store 
-node-modules
+node_modules
+public
+index.html
+wishlist.html
+schema
+sequelize-query.js
+models
+index.js
+movie.js
+user.js
+user-movie.js
+config
+config.json
