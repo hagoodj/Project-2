@@ -33,12 +33,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Movie.associate = function(models) { // <-- double check this with Jerome/TA's. ALSO ASK ABOUT SYNCING.
-    Movie.hasMany(models.User, {
+  Movie.associate = function(models) {
+    Movie.hasMany(models.User, { // <-- double check this with Jerome/TA's.
       onDelete: "cascade"
     });
-
-    Movie.belongsTo(models.User, {
+    Movie.belongsTo(models.User, { // <-- do I also need userpin?
       foreignKey: {
         allowNull: false
       }

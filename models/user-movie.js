@@ -41,5 +41,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  // ---- Do I need to add associations here ?? ----
+
   return userMovie;
 };

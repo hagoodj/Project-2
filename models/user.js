@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  User.associate = function(models) { // <-- double check this with Jerome/TA's. ALSO ASK ABOUT SYNCING.
+  User.associate = function(models) {
     User.hasMany(models.Movie, {
       onDelete: "cascade"
     });
