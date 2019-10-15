@@ -18,14 +18,18 @@ module.exports = function (app) {
 
   });
 
-  app.get("api/:usermovieid/movies", function(req,res) {
-
+  app.get("/wishlist/:userid/movies", function(req,res) {
+    console.log("getting users movies")
     db.userMovie.findAll({
       where: {
-        UserId: req.params.usermovieid
+        UserId: req.params.userid
       }
+    }).then(user => {
+      console.log("found users movies")
+      console.log(user)
+      res.json(user)
     })
-    
+
   })
 
 }

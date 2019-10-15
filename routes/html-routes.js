@@ -8,7 +8,9 @@ module.exports = function(app) {
   });
 
   // wishlist route loads wishlist.html
-  app.get("/wishlist", function(req, res) {
+  app.get("/wishlist/:userid", function(req, res) {
+    console.log("serving wishlist html")
+    var userid = req.params.userid
     res.sendFile(path.join(__dirname, "../public/wishlist.html"));
   });
 
