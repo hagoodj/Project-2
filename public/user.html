@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Movie Tracker</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -26,14 +26,18 @@
                     <h3>Find User</h3>
                 </div>
                 <div class="row">
-                    <form id="searchUser">
+                    <form id="findUser">
                         <div class="form-group">
-                            <label for="Username">Username:</label>
-                            <input placeholder="username" type="text" class="form-control" id="username">
-                            <label for="pin">Pin:</label>
-                            <input placeholder="Pin" class="form-control" id="pin"></input><br>
-                            <button type="submit" class="btn btn-success submit">Go</button>
+                            <label for="findusername">Username:</label>
+                            <input placeholder="Username" class="form-control" type="text" id="findusername" />
                         </div>
+                        <div class="form-group">
+                            <label for="finduserpin">Pin:</label>
+                            <input placeholder="Pin" class="form-control" id="finduserpin" /><br>
+                        </div>
+
+                        <button type="submit" class="btn btn-success submit">Go</button>
+
                     </form>
                 </div>
             </div>
@@ -44,17 +48,23 @@
                 <div class="row">
                     <form id="createUser">
                         <div class="form-group">
-                            <label for="Username">Username:</label>
-                            <input placeholder="username" type="text" class="form-control" id="username">
-                            <label for="pin">Pin:</label>
-                            <input placeholder="Pin" class="form-control" id="pin"></input><br>
-                            <button type="submit" class="btn btn-success submit">Create User</button>
+                            <label for="newusername">Username:</label>
+                            <input placeholder="Username" class="form-control" type="text" id="newusername" />
                         </div>
+                        <div class="form-group">
+                            <label for="newuserpin">Pin:</label>
+                            <input placeholder="Pin" class="form-control" id="newuserpin" /><br>
+                        </div>
+
+                        <button type="submit" class="btn btn-success submit">Create User</button>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="js/movietracker.js" type="text/javascript"></script>
 
 </body>
 
