@@ -26,7 +26,7 @@ app.use(express.static("public"));
 // Import routes and give the server access to them.
 require("./routes/html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
-require("./routes/movie-api-routes")(app);
+require("./routes/movie-api-routes.js")(app);
 
 
 

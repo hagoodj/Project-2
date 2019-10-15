@@ -4,10 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-      }
+      allowNull: false
     },
     userpin: {
       type: DataTypes.INTEGER,

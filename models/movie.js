@@ -5,17 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-      }
-    },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-      }
+      allowNull: false
     }
   });
 
