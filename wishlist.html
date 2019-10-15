@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,10 +22,49 @@
             <p class="lead">A place to view and manage your wishlist!</p>
         </div>
     </div>
-    <div class = "container">
-        <ul id = "wishlist">
-<!--  -->
-                <div id="container-movies">
+    <div class="container">
+        <ul id="wishlist">
+
+            <!----------------- MOVIE SEARCH RESULTS PORTION------------------>
+            <div id="container-movies">
+
+                <div class="container-movie">
+                    <div class="movie">
+<!-- FRONT -->
+                        <div class="movie-inside front">
+                            <img id="movie-poster" src="">
+                        </div>
+<!-- BACK -->
+                        <div class="movie-inside back">
+                            <div class="movie-details"> 
+                                <h1 id="movie-title">"Title: " + title<br>
+                                    <span>"Year: " + year + " - " + "Runtime: " + runtime</span>
+                                </h1>
+                                <!-- movie-tags -->
+                                <ul class="movie-genres">
+                                    <li><a id="genre" href="#">"Genre: " + genre</a></li>
+                                    <li><a id="genre" href="#">"Genre: " + genre</a></li>
+                                </ul>
+                                <!-- movie-synopsis -->
+                                <p class="movie-plot">"Plot: " + plot</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button class="likeDislike" type="button">LIKE</button>
+
+                    <button class="likeDislike" type="button">DISLIKE</button>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- <div id="container-movies">
 
                         <div class="container-movie">
                             <div class="movie">
@@ -62,20 +100,21 @@
 
 
                         </div>
-                </div>
+                </div> -->
 
 
-<!--  -->
+            <!--  -->
 
 
 
 
         </ul>
         <form id="addMovie">
-                <div class="form-group">
-                    <input placeholder="Add Movie" type="text" id="addmovie">
-                    <button type="submit" class="btn-danger">Add</button>
-                </div>
+            <div class="form-group">
+    <!-------------------- MOVIE SEARCH RESULTS PORTION------------------>
+                <input placeholder="Add Movie" type="text" id="addmovie">
+                <button type="submit" class="btn-danger">Add</button>
+            </div>
         </form>
     </div>
 
