@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
+    console.log("window location" + window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
+    var userid = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     getUserMovies()
-    console.log(window.location.href.substring(window.location.href.lastIndexOf('/')+1))
-    var userid = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
 
     function getUserMovies() {
         console.log(userid)
@@ -47,5 +47,8 @@ $(document).ready(function () {
             newMovie.val("");
         });
     }
+
+    // *******************Add User Movie*******************
+    
 
 });
