@@ -1,15 +1,23 @@
 var db = require('../models');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
   app.get("/api/users", function (req, res) {
 
-    db.User.findAll({}).then(function (results) {
-      res.json(results);
+    db.User.findAll({}).then(function (dbUser) {
+      res.json(dbUser);
     });
 
   });
-  
+
+  app.post("/api/users", function (req, res) {
+
+    db.User.create(req.body).then(function (dbUser) {
+      res.json(dbUser);
+    });
+
+  });
+
   app.get("/api/:username/:userpin", function (req, res) {
 
     db.User.findOne({
@@ -17,16 +25,10 @@ module.exports = function(app) {
         username: req.params.username,
         userpin: req.params.userpin
       }
-    }).then(function (results) {
-      res.json(results);
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
 
   });
-  
-  app.post("/api/newuser", function (req, res) {
-    db.User.create(req.body).then(function (dbUser) {
-      res.json(dbUser);
-    });
-  });
-  
+
 }
