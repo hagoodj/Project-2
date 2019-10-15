@@ -41,58 +41,14 @@ $(document).ready(function () {
 
     function findUser() {
         event.preventDefault();
-        location.assign('/wishlist');
-        query = "/api/" + findusername.val() + "/" + finduserpin.val();
+        var query = "/api/" + findusername.val() + "/" + finduserpin.val();
+        console.log("\nquery")
         console.log(query);
         $.get(query, function (data) {
-            console.log(data.id)
+            console.log(data)
             uniqueUserId = data.id;
-            console.log("getusermovie")
-        }).then(getUserMovies(uniqueUserId))
-    }
-
-    function getUserMovies(userMovieId) {
-        console.log("getUserMovies")
-        $.get("/api/" + userMovieId + "/movies", function (data) {
-            if (!data) {
-                $("#addMovieForm").append('<form id="addMovie"><div class="form-group"><input placeholder="Add Movie" type="text" id="addmovie"><button type="submit" class="btn" data-id = ' + userMovieId + '>+</button></div></form>')
-            } else {
-                for (i = 0; i < data.length; i++) {
-                    $("#wishlist").append("<li>" + data[i] + "</li>")
-                    $("#addMovieForm").append('<form id="addMovie"><div class="form-group"><input placeholder="Add Movie" type="text" id="addmovie"><button type="submit" class="btn" data-id = ' + userMovieId + '>+</button></div></form>')
-                }
-            }
+            window.location = '/wishlist/' + uniqueUserId;
         })
-    }
-
-    // *******************Add Movie*******************
-
-    var newMovie = $("#addmovie");
-
-    $(document).on("submit", "#addMovie", addMovie);
-
-    getMovies();
-
-    function addMovie(event) {
-        event.preventDefault();
-        if (!newMovie.val().trim()) {
-            return;
-        }
-        createMovie({
-            title: newMovie.val().trim(),
-        });
-    }
-
-    function createMovie(movieData) {
-        console.log(movieData)
-        $.post("/api/movies", movieData)
-            .then(getMovies);
-    }
-
-    function getMovies() {
-        $.get("/api/movies", function (data) {
-            newMovie.val("");
-        });
     }
 
 });
