@@ -1,18 +1,24 @@
 $(document).ready(function () {
 
-    console.log("window location" + window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
+    console.log(window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
     var userid = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+
     getUserMovies()
 
     function getUserMovies() {
+        console.log("get user movies")
         console.log(userid)
         $.get("/wishlist/" + userid + "/movies", function (res) {
-            if (!res.data) {
-                $("#addMovieForm").append('<form id="addMovie"><div class="form-group"><input placeholder="Add Movie" type="text" id="addmovie"><button type="submit" class="btn" data-id = ' + userid + '>+</button></div></form>')
+            $("#addMovieButton").attr("data-id", userid)
+            console.log(res[0])
+            if (!res[0]) {
+                return
             } else {
-                for (i = 0; i < res.data.length; i++) {
-                    $("#wishlist").append("<li>" + data[i] + "</li>")
-                    $("#addMovieForm").append('<form id="addMovie"><div class="form-group"><input placeholder="Add Movie" type="text" id="addmovie"><button type="submit" class="btn" data-id = ' + userid + '>+</button></div></form>')
+                console.log("get user movies for loop")
+                $("#wishlist").empty();
+                for (i = 0; i < res.length; i++) {
+                    $("#wishlist").append("<li>" + res[i].MovieId + "</li>")
+                    $("#addMovieButton").data("id", userid)
                 }
             }
         })
@@ -27,6 +33,7 @@ $(document).ready(function () {
     getMovies();
 
     function addMovie(event) {
+        console.log("adding movie")
         event.preventDefault();
         if (!newMovie.val().trim()) {
             return;
@@ -44,11 +51,33 @@ $(document).ready(function () {
 
     function getMovies() {
         $.get("/api/movies", function (data) {
+            addUserMovie();
             newMovie.val("");
         });
     }
 
     // *******************Add User Movie*******************
-    
+
+    function addUserMovie() {
+        console.log("adding user movie")
+        console.log(newMovie.val().trim())
+        if (!newMovie.val().trim()) {
+            return;
+        }
+        $.get("/api/" + newMovie.val().trim(), function (res) {
+            console.log(res.id);
+            createUserMovie({
+                UserId: userid,
+                MovieId: res.id,
+            });
+        });
+    }
+
+    function createUserMovie(userMovieData) {
+        console.log("create user movie");
+        console.log(userid);
+        $.post("/wishlist/" + userid + "/movies", userMovieData)
+            .then(getUserMovies);
+    }
 
 });
