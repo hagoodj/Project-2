@@ -16,15 +16,91 @@ $(document).ready(function () {
             } else {
                 console.log("get user movies titles for each user movie")
                 $("#wishlist").empty();
+                $("#likedMovies").empty();
+                $("#dislikedMovies").empty();
                 for (i = 0; i < res.length; i++) {
-                    console.log(res[i].MovieId)
-                    $.get("/title/" + res[i].MovieId, function (result) {
-                        console.log(result)
-                        $("#wishlist").append("<li>" + result.title + "</li>")
-                    })
+
+                    if (res[i].like === true) {
+                        $.get("/title/" + res[i].MovieId, function (result) {
+                            $("#likedMovies").append("<li data-userid = " + userid + " data-movieid = " + result.id + ">" + result.title + "</li>")
+                            $("#likedMovies").append("<button class = 'delete' data-userid = " + userid + " data-movieid = " + result.id + ">Delete</button>")
+                        })
+                    } else if (res[i].like === false) {
+                        $.get("/title/" + res[i].MovieId, function (result) {
+                            $("#dislikedMovies").append("<li data-userid = " + userid + " data-movieid = " + result.id + ">" + result.title + "</li>")
+                            $("#dislikedMovies").append("<button class = 'delete' data-userid = " + userid + " data-movieid = " + result.id + ">Delete</button>")
+                        })
+                    } else {
+                        $.get("/title/" + res[i].MovieId, function (result) {
+                            $("#wishlist").append("<li data-userid = " + userid + " data-movieid = " + result.id + ">" + result.title + "</li>")
+                            $("#wishlist").append("<button class = 'delete' data-userid = " + userid + " data-movieid = " + result.id + ">Delete</button>")
+                            $("#wishlist").append("<button class = 'like' data-userid = " + userid + " data-movieid = " + result.id + ">Like</button>")
+                            $("#wishlist").append("<button class = 'dislike' data-userid = " + userid + " data-movieid = " + result.id + ">Dislike</button>")
+
+                        })
+                    }
                 }
             }
         })
+    }
+
+    // *******************Movie Buttons*********************************************************
+
+    // ***********Delete***********
+
+    $(document).on("click", ".delete", deleteMovie)
+
+    function deleteMovie() {
+        console.log(this)
+        var listUserId = $(this).data("userid");
+        console.log(listUserId);
+        var listMovieId = $(this).data("movieid");
+        console.log(listMovieId);
+        $.ajax({
+            method: "DELETE",
+            url: "/wishlist/" + listUserId + "/" + listMovieId
+        })
+            .then(getUserMovies);
+    }
+
+    // ***********Like***********
+
+    $(document).on("click", ".like", likeMovie)
+
+    function likeMovie(data) {
+        console.log(this)
+        var listUserId = $(this).data("userid");
+        console.log(listUserId);
+        var listMovieId = $(this).data("movieid");
+        console.log(listMovieId);
+        var updateLike = {
+            like: true
+        };
+        $.ajax({
+            method: "PUT",
+            url: "/wishlist/" + listUserId + "/" + listMovieId,
+            data: updateLike
+        }).then(getUserMovies);
+    }
+
+    // ***********Dislike***********
+
+    $(document).on("click", ".dislike", dislikeMovie)
+
+    function dislikeMovie(data) {
+        console.log(this)
+        var listUserId = $(this).data("userid");
+        console.log(listUserId);
+        var listMovieId = $(this).data("movieid");
+        console.log(listMovieId);
+        var updateLike = {
+            like: false
+        };
+        $.ajax({
+            method: "PUT",
+            url: "/wishlist/" + listUserId + "/" + listMovieId,
+            data: updateLike
+        }).then(getUserMovies);
     }
 
     // *******************Add Movie*******************
