@@ -69,4 +69,30 @@ module.exports = function (app) {
 
   });
 
+  app.delete("/wishlist/:userid/:movieid", function (req, res) {
+    db.userMovie.destroy({
+      where: {
+        UserId: req.params.userid,
+        MovieId: req.params.movieid
+      }
+    }).then(function (dbuserMovie) {
+      res.json(dbuserMovie);
+    });
+  });
+
+  app.put("/wishlist/:userid/:movieid", function (req, res) {
+    console.log("updating movie to liked")
+    console.log(req.body.like)
+    db.userMovie.update({
+      like: req.body.like
+    }, {
+        where: {
+          UserId: req.params.userid,
+          MovieId: req.params.movieid
+        }
+      }).then(function (dbuserMovie) {
+        res.json(dbuserMovie);
+      });
+  });
+
 }
