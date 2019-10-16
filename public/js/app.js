@@ -15,3 +15,15 @@ function displayMovieInfo() {
         }
     });
 }
+
+// get full movie info by searching for the movie id
+function getMovieData(movieId) {
+    var queryURL = "https://www.omdbapi.com/?i=" + movieId + "&y=&plot=short&apikey=9e558ee4"
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        // use function to fill page
+        createMovieElement(response);
+    })
+}
