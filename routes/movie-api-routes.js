@@ -18,7 +18,36 @@ module.exports = function (app) {
 
   });
 
-  app.get("/wishlist/:userid/movies", function(req,res) {
+  app.get("/api/:movie", function (req, res) {
+
+    db.Movie.findOne({
+      where: {
+        title: req.params.movie
+      }
+    }).then(movie => {
+      console.log("found movie")
+      console.log(movie.dataValues)
+      res.json(movie.dataValues);
+    });
+
+  });
+
+  app.get("/title/:movieid", function (req, res) {
+    console.log("getting movie title")
+    db.Movie.findOne({
+      where: {
+        id: req.params.movieid
+      }
+    }).then(title => {
+      console.log("found movie title")
+      console.log(title)
+      res.json(title);
+    });
+
+  })
+
+  app.get("/wishlist/:userid/movies", function (req, res) {
+
     console.log("getting users movies")
     db.userMovie.findAll({
       where: {
@@ -31,5 +60,13 @@ module.exports = function (app) {
     })
 
   })
+
+  app.post("/wishlist/:userid/movies", function (req, res) {
+    console.log("creating user movie")
+    db.userMovie.create(req.body).then(function (dbuserMovie) {
+      res.json(dbuserMovie);
+    });
+
+  });
 
 }
