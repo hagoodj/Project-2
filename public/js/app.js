@@ -27,3 +27,55 @@ function getMovieData(movieId) {
         createMovieElement(response);
     })
 }
+
+// create element to store movie info and append to page
+function createMovieElement(response) {
+    var resultsFront = $("<div class='movie-inside front'>");
+    var resultsBack = $("<div class='movie-inside back'>");
+    var movieDetails = $("<div class='movie-details'>");
+    var movieBox = $("<div class='movie'>");
+    var movieContainer = $("<div class='container-movie'>");
+    var dislike = $("<button class='likeDislike' type='button'>LIKE</button>");
+    var like = $("<button class='likeDislike' type='button'>DISLIKE</button>");
+
+
+    var poster = response.Poster;
+    var posterInput = $("<img class='movie-poster'>").attr("src", poster);
+    resultsFront.append(posterInput);
+
+    var title = response.Title;
+    var titleInput = $("<h1 class='movie-title'>").text(title);
+    movieDetails.append(titleInput);
+
+
+    var year = response.Year;
+    var yearInput = $("<span>").text("Released: " + year);
+    movieDetails.append(yearInput);
+
+
+
+    var runtime = response.Runtime;
+    var runtimeInput = $("<span>").text(" Runtime: " + runtime);
+    movieDetails.append(runtimeInput);
+
+
+    var plot = response.Plot;
+    var plotInput = $("<p class='movie-plot'>").text("Plot: " + plot);
+    movieDetails.append(plotInput);
+
+
+    movieBox.append(resultsFront);
+    resultsBack.append(movieDetails);
+    movieBox.append(resultsBack);
+
+    // movieBox.append($("<br><br><br><br>"));
+    // // resultsBack.append($("<br><br><br><br>"));
+    // movieDetails.append($("<br><br><br><br>"));
+
+    movieBox.append(dislike);
+    movieBox.append(like);
+
+    movieContainer.append(movieBox);
+
+    $(".container-movies").append(movieContainer);
+}
