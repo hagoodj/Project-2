@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Tracker</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+        <div class="container wrapper">
+            <h1>
+                <span>Movie Tracker</span>
+            </h1>
+
+            <div class="jumbotron border border-dark bg-awesome rounded text-center">
+                <!-- <h1 class="display-4">Movie Tracker</h1> -->
+                <p class="lead">Keep track of the movies you have liked, disliked, and have yet to watch!</p>
+            </div>
+
+            <div class="row p-3">
+                <div class="col-md border border-dark p-3 bg-awesome rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Existing User</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="searchUser">
+                                <div class="form-group">
+                                    <label for="Username">Username:</label>
+                                    <input placeholder="username" type="text" class="form-control" id="username">
+                                    <label for="pin">Pin:</label>
+                                    <input placeholder="Pin" class="form-control" id="pin"></input><br>
+                                    <button type="submit" class="btn btn-success submit">Sign-In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-0 m-1" style="width:20px"></div>
+                <div class="col-md border border-dark p-3 bg-awesome rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Create New User</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="createUser">
+                                <div class="form-group">
+                                    <label for="Username">Username:</label>
+                                    <input placeholder="username" type="text" class="form-control" id="username">
+                                    <label for="pin">Pin:</label>
+                                    <input placeholder="Pin" class="form-control" id="pin"></input><br>
+                                    <button type="submit" class="btn btn-success submit">Create User</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="outer-scratch"></div>
+</body>
+
+</html>
