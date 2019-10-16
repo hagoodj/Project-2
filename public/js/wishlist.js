@@ -10,14 +10,14 @@ $(document).ready(function () {
         console.log(userid)
         $.get("/wishlist/" + userid + "/movies", function (res) {
             $("#addMovieButton").attr("data-id", userid)
+            $("#likedMovies").empty();
+            $("#dislikedMovies").empty();
             console.log(res[0])
             if (!res[0]) {
                 return
             } else {
                 console.log("get user movies titles for each user movie")
                 $("#wishlist").empty();
-                $("#likedMovies").empty();
-                $("#dislikedMovies").empty();
                 for (i = 0; i < res.length; i++) {
 
                     if (res[i].like === true) {
