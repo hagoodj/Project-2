@@ -79,3 +79,8 @@ function createMovieElement(response) {
 
     $(".container-movies").append(movieContainer);
 }
+
+$("#add-movie").on("click", function(event){
+    event.preventDefault();
+    displayMovieInfo();
+});
