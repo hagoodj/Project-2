@@ -32,6 +32,20 @@ module.exports = function (app) {
 
   });
 
+  app.get("/title/:movieid", function (req, res) {
+    console.log("getting movie title")
+    db.Movie.findOne({
+      where: {
+        id: req.params.movieid
+      }
+    }).then(title => {
+      console.log("found movie title")
+      console.log(title)
+      res.json(title);
+    });
+
+  })
+
   app.get("/wishlist/:userid/movies", function (req, res) {
 
     console.log("getting users movies")

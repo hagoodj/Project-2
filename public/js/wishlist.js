@@ -14,11 +14,14 @@ $(document).ready(function () {
             if (!res[0]) {
                 return
             } else {
-                console.log("get user movies for loop")
+                console.log("get user movies titles for each user movie")
                 $("#wishlist").empty();
                 for (i = 0; i < res.length; i++) {
-                    $("#wishlist").append("<li>" + res[i].MovieId + "</li>")
-                    $("#addMovieButton").data("id", userid)
+                    console.log(res[i].MovieId)
+                    $.get("/title/" + res[i].MovieId, function (result) {
+                        console.log(result)
+                        $("#wishlist").append("<li>" + result.title + "</li>")
+                    })
                 }
             }
         })
