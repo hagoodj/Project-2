@@ -2,69 +2,94 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Movie Tracker</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Movie Tracker</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  </script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Movie Tracker</h1>
-            <p class="lead">Keep track of the movies you have liked, disliked, and have yet to watch!</p>
-        </div>
-    </div>
+  <div class="jumbotron jumbotron-fluid">
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <h3>Find User</h3>
-                </div>
-                <div class="row">
-                    <form id="findUser">
-                        <div class="form-group">
-                            <label for="findusername">Username:</label>
-                            <input placeholder="Username" class="form-control" type="text" id="findusername" />
-                        </div>
-                        <div class="form-group">
-                            <label for="finduserpin">Pin:</label>
-                            <input placeholder="Pin" class="form-control" id="finduserpin" /><br>
-                        </div>
+      <div class="animated slideInLeft slow">
+        <h1 class="display-4">Movie Tracker</h1>
+        <p class="lead">Keep track of the movies you have liked, disliked, and have yet to watch!</p>
+      </div>
 
-                        <button type="submit" class="btn btn-success submit">Go</button>
+      <div class="animated slideInRight slow">
 
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <h3>Create New User</h3>
-                </div>
-                <div class="row">
-                    <form id="createUser">
-                        <div class="form-group">
-                            <label for="newusername">Username:</label>
-                            <input placeholder="Username" class="form-control" type="text" id="newusername" />
-                        </div>
-                        <div class="form-group">
-                            <label for="newuserpin">Pin:</label>
-                            <input placeholder="Pin" class="form-control" id="newuserpin" /><br>
-                        </div>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
+        <span class="iconify" id="icon" data-icon="whh:moviereelalt" data-inline="false"></span>
 
-                        <button type="submit" class="btn btn-success submit">Create User</button>
 
-                    </form>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="js/movietracker.js" type="text/javascript"></script>
+  <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;"></canvas></div>
+  <div class="container center-vertically-holder">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <h3>Find User</h3>
+        </div>
+        <div class="row">
+          <form id="findUser">
+            <div class="form-group">
+              <label for="findusername">Username:</label>
+              <input placeholder="Username" class="form-control" type="text" id="findusername" />
+            </div>
+            <div class="form-group">
+              <label for="finduserpin">Pin:</label>
+              <input placeholder="Pin" class="form-control" id="finduserpin" /><br>
+            </div>
+
+            <button type="submit" class="btn btn-success submit">Go</button>
+
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <h3>Create New User</h3>
+        </div>
+        <div class="row">
+          <form id="createUser">
+            <div class="form-group">
+              <label for="newusername">Username:</label>
+              <input placeholder="Username" class="form-control" type="text" id="newusername" />
+            </div>
+            <div class="form-group">
+              <label for="newuserpin">Pin:</label>
+              <input placeholder="Pin" class="form-control" id="newuserpin" /><br>
+            </div>
+
+            <button type="submit" class="btn btn-success submit">Create User</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/particles.js" type="text/javascript"></script>
+  <script src="js/movietracker.js" type="text/javascript"></script>
+
 
 </body>
 
